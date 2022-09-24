@@ -16,8 +16,6 @@ const categories = computed(() => {
   
   const categories = uniq(startedTasksDates.concat(doneTasksDates).filter(date => date !== 'null'))
 
-  console.log(categories)
-
   const categoriesSorted = categories.sort((a, b) => dayjs(a).valueOf() - dayjs(b).valueOf())
 
   return categoriesSorted

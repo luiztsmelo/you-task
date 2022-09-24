@@ -18,9 +18,9 @@ export default {
       try {
         commit('SET_LOADING', true)
 
-        /* await axios.post('', credentials) */
+        const res = await axios.post('/login', credentials)
 
-        await new Promise(resolve => setTimeout(resolve, 3000))
+        console.log(res.data.message)
 
         commit('SET_IS_AUTHENTICATED', true)
       } catch (error) {

@@ -27,11 +27,10 @@
 import { ref, reactive, computed } from 'vue'
 import { useStore } from 'vuex'
 import dayjs from 'dayjs'
-import vuetify from '@/plugins/vuetify'
 import { DatePicker } from 'v-calendar'
 import 'v-calendar/dist/style.css'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
-console.log(vuetify)
+
 dayjs.extend(customParseFormat)
 
 const store = useStore()
