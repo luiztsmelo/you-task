@@ -1,3 +1,4 @@
+import type { AuthState, Credentials } from '@/types/auth'
 import axios from 'axios'
 
 export default {
@@ -6,15 +7,15 @@ export default {
     loading: false
   }),
   mutations: {
-    SET_IS_AUTHENTICATED (state, value: boolean) {
+    SET_IS_AUTHENTICATED (state: AuthState, value: boolean) {
       state.isAuthenticated = value
     },
-    SET_LOADING (state, value: boolean) {
+    SET_LOADING (state: AuthState, value: boolean) {
       state.loading = value
     }
   },
   actions: {
-    async login ({ commit }, credentials) {
+    async login ({ commit }, credentials: Credentials) {
       try {
         commit('SET_LOADING', true)
 

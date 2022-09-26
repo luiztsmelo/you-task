@@ -3,20 +3,19 @@
   v-btn#add-task-form-btn(small variant="text" color="primary" prepend-icon="mdi-plus-circle" @click="showForm = true" v-if="!showForm") Add Task
 
   v-scroll-y-transition(hide-on-leave)
-    .form.pa-3(v-if="showForm")
-      v-form(ref="form" v-model="valid" lazy-validation)
-        v-text-field#task-text-input(variant="underlined" :counter="100" :rules="textRules" v-model="task.text" label="Task" placeholder="e.g., Get a job" required)
+    v-form.form.pa-3(ref="form" v-model="valid" lazy-validation v-if="showForm")
+      v-text-field#task-text-input(variant="underlined" :counter="100" :rules="textRules" v-model="task.text" label="Task" placeholder="e.g., Get a job" required)
 
-        div(style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;")
-          v-select(variant="underlined" :items="['1', '2', '3']" v-model="task.priority" label="Priority" required)
+      div(style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;")
+        v-select(variant="underlined" :items="taskPriotitySelectItems" v-model="task.priority" label="Priority" required)
 
-          date-picker(mode="date" :model-config="datePickerModelConfig" color="indigo" v-model="task.startDate")
-            template(v-slot="{ showPopover }")
-              v-text-field(variant="underlined" label="Start Date" prepend-inner-icon="mdi-calendar-start" @click="showPopover" v-model="task.startDate")
+        date-picker(mode="date" :model-config="datePickerModelConfig" color="indigo" v-model="task.startDate")
+          template(v-slot="{ showPopover }")
+            v-text-field(variant="underlined" label="Start Date" prepend-inner-icon="mdi-calendar-start" @click="showPopover" v-model="task.startDate")
 
-          date-picker(mode="date" :min-date="dueDateMinDate" :model-config="datePickerModelConfig" color="indigo" v-model="task.dueDate" )
-            template(v-slot="{ showPopover }")
-              v-text-field(variant="underlined" label="Due Date" prepend-inner-icon="mdi-calendar-end" @click="showPopover" v-model="task.dueDate")
+        date-picker(mode="date" :min-date="dueDateMinDate" :model-config="datePickerModelConfig" color="indigo" v-model="task.dueDate" )
+          template(v-slot="{ showPopover }")
+            v-text-field(variant="underlined" label="Due Date" prepend-inner-icon="mdi-calendar-end" @click="showPopover" v-model="task.dueDate")
 
       .actions
         v-btn.mr-2(variant="text" color="black" @click="showForm = false") Cancel
@@ -49,13 +48,28 @@ const textRules = [
   (v: string) => (v && v.length <= 100) || 'Task text must be less than 100 characters'
 ]
 
+const taskPriotitySelectItems = [
+  {
+    title: 'Low',
+    value: 'LOW'
+  },
+  {
+    title: 'Medium',
+    value: 'MEDIUM'
+  },
+  {
+    title: 'High',
+    value: 'HIGH'
+  }
+]
+
 const initialTask = {
   text: '',
-  priority: '1',
+  priority: 'LOW',
   startDate: dayjs().format('DD/MM/YYYY'),
   dueDate: '',
   done: false,
-  doneAt: null
+  doneDate: null
 }
 
 const task = reactive({ ...initialTask })

@@ -27,10 +27,10 @@ const startedTasksSeriesData = computed(() => {
   for (let date of categories.value) {
     const tasksByDayEntries = Object.entries(store.getters['task/startedTasksGroupedByDay'])
 
-    if (tasksByDayEntries.some((tasksByDay: string[]) => tasksByDay[0] === date)) {
-      for (const tasksByDay of tasksByDayEntries) {
-        if (tasksByDay[0] === date) {
-          startedTasksSeriesData.push(tasksByDay[1].length)
+    if (tasksByDayEntries.some(tasksByDayEntry => tasksByDayEntry[0] === date)) {
+      for (const tasksByDayEntry of tasksByDayEntries) {
+        if (tasksByDayEntry[0] === date) {
+          startedTasksSeriesData.push(tasksByDayEntry[1].length)
         }
       }
     } else {
@@ -47,10 +47,10 @@ const doneTasksSeriesData = computed(() => {
   for (const date of categories.value) {
     const tasksByDayEntries = Object.entries(store.getters['task/doneTasksGroupedByDay'])
 
-    if (tasksByDayEntries.some((tasksByDay: string[]) => tasksByDay[0] === date)) {
-      for (const tasksByDay of tasksByDayEntries) {
-        if (tasksByDay[0] === date) {
-          doneTasksSeriesData.push(tasksByDay[1].length)
+    if (tasksByDayEntries.some(tasksByDayEntry => tasksByDayEntry[0] === date)) {
+      for (const tasksByDayEntry of tasksByDayEntries) {
+        if (tasksByDayEntry[0] === date) {
+          doneTasksSeriesData.push(tasksByDayEntry[1].length)
         }
       }
     } else {

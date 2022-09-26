@@ -1,4 +1,4 @@
-# you-task
+# You Task
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -17,36 +17,38 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
     2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
 ## Project Setup
 
 ```sh
-npm install
+yarn
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+yarn dev
 ```
 
 ### Type-Check, Compile and Minify for Production
 
 ```sh
-npm run build
+yarn build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Run Unit Tests
 
 ```sh
-npm run test:unit
+yarn test:unit
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Run Cypress Tests
 
 ```sh
-npm run lint
+npx cypress open
+```
+
+### Lint
+
+```sh
+yarn lint
 ```

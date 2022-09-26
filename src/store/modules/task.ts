@@ -1,3 +1,4 @@
+import type { Task, TaskState } from '@/types/task'
 import dayjs from 'dayjs'
 import { groupBy } from 'lodash'
 
@@ -7,54 +8,54 @@ export default {
       {
         startDate: '2022-08-02T03:00:00.000Z',
         text: 'Lavar carro',
-        priority: '1',
+        priority: 'LOW',
         dueDate: '2022-10-02T03:00:00.000Z',
         done: false,
-        doneAt: null
+        doneDate: null
       },
       {
         startDate: '2022-08-17T03:00:00.000Z',
         text: 'Comprar roupa',
-        priority: '2',
+        priority: 'MEDIUM',
         dueDate: null,
         done: true,
-        doneAt: '2022-11-07T03:00:00.000Z'
+        doneDate: '2022-11-07T03:00:00.000Z'
       },
       {
         startDate: '2022-08-13T03:00:00.000Z',
         text: 'Aprender inglês',
-        priority: '3',
+        priority: 'HIGH',
         dueDate: '2023-02-22T03:00:00.000Z',
         done: true,
-        doneAt: '2022-08-17T03:00:00.000Z'
+        doneDate: '2022-08-17T03:00:00.000Z'
       }
-    ]
+    ] as Task[]
   }),
   getters: {
-    startedTasksGroupedByDay (state) {
+    startedTasksGroupedByDay (state: TaskState) {
       return groupBy(state.tasks, 'startDate')
     },
-    doneTasksGroupedByDay (state) {
-      return groupBy(state.tasks, 'doneAt')
+    doneTasksGroupedByDay (state: TaskState) {
+      return groupBy(state.tasks, 'doneDate')
     }
   },
   mutations: {
-    ADD_TASK (state, task) {
+    ADD_TASK (state: TaskState, task: Task) {
       state.tasks.push(task)
     },
-    DELETE_TASK (state, task) {
-      state.tasks = state.tasks.filter(_task => _task !== task)
+    DELETE_TASK (state: TaskState, task: Task) {
+      state.tasks = state.tasks.filter((_task: Task) => _task !== task)
     },
-    CHECK_TASK (state, task) {
-      const taskFound = state.tasks.find(_task => _task === task)
+    CHECK_TASK (state: TaskState, task: Task) {
+      const taskFound = state.tasks.find((_task: Task) => _task === task)
 
       if (taskFound) {
         if (taskFound.done) {
           taskFound.done = false
-          taskFound.doneAt = null
+          taskFound.doneDate = null
         } else {
           taskFound.done = true
-          taskFound.doneAt = dayjs(`${dayjs().year()}-${dayjs().month() + 1}-${dayjs().date()}`).toISOString()
+          taskFound.doneDate = dayjs(`${dayjs().year()}-${dayjs().month() + 1}-${dayjs().date()}`).toISOString()
         }
       }
     }

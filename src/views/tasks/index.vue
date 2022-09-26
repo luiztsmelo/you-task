@@ -2,7 +2,7 @@
 .tasks-view.pa-6
   Logo(size="32")
 
-  .tasks.mt-9
+  .section.mt-9
     h2.mt-6 Tasks
 
     .tasks-list
@@ -10,7 +10,7 @@
 
     AddTask
 
-  .report.mt-12
+  .section.mt-12
     h2.mt-6 Report
 
     TasksReportChart
@@ -32,21 +32,15 @@ const store = useStore()
   grid-template-columns: 1fr;
   place-items: center;
 
-  .tasks {
+  .section {
     display: flex;
     flex-direction: column;
     width: 600px;
-
-    .tasks-list {
-      display: grid;
-      grid-template-columns: 1fr;
-    }
   }
 
-  .report {
-    display: flex;
-    flex-direction: column;
-    width: 600px;
+  .tasks-list {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }
 </style>

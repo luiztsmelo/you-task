@@ -13,7 +13,7 @@ describe('you-task', () => {
 
     cy.get('#login-btn').click()
 
-    cy.wait(5000)
+    cy.wait(2000)
   })
 
   it('can add a task', () => {

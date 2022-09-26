@@ -4,7 +4,7 @@
 
   .body-1(:class="{ 'task__done': task.done }") {{ task.text }}
 
-  v-chip(color="green" :style="{ opacity: task.done ? '0.333' : '' }") {{ task.priority }}
+  v-chip(:color="taskPriorityIconColor" :style="{ opacity: task.done ? '0.333' : '' }") {{ taskPriorityText }}
 
   v-chip(color="secondary" :style="{ opacity: task.done ? '0.333' : '' }" v-if="task.dueDate")
     v-icon(start icon="mdi-calendar-end" size="16")
@@ -30,6 +30,24 @@ const props = defineProps({
 })
 
 const dueDateFormatted = computed(() => dayjs(props.task.dueDate).format('DD/MM/YYYY'))
+
+const taskPriorityText = computed(() => {
+  switch (props.task.priority) {
+    case 'LOW': return '3'
+    case 'MEDIUM': return '2'
+    case 'HIGH': return '1'
+    default: return ''
+  }
+})
+
+const taskPriorityIconColor = computed(() => {
+  switch (props.task.priority) {
+    case 'LOW': return 'green'
+    case 'MEDIUM': return 'yellow'
+    case 'HIGH': return 'red'
+    default: return ''
+  }
+})
 </script>
 
 <style lang="scss" scoped>

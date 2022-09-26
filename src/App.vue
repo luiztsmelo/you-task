@@ -10,6 +10,5 @@ v-app#app
 <style lang="scss">
 #app {
   font-family: 'Outfit', sans-serif;
-  color: var(--v-primary-base);
 }
 </style>
