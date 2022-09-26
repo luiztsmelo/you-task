@@ -41,7 +41,7 @@ yarn build
 yarn test:unit
 ```
 
-### Run Cypress Tests
+### Run E2E Tests
 
 ```sh
 npx cypress open
