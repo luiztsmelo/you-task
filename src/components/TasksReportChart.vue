@@ -81,7 +81,7 @@ const chartOptions = computed(() => {
     },
     plotOptions: {
       bar: {
-        columnWidth: '50%'
+        columnWidth: '40%'
       }
     },
     dataLabels: {

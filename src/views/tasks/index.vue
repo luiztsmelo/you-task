@@ -35,7 +35,7 @@ const store = useStore()
   .section {
     display: flex;
     flex-direction: column;
-    width: 600px;
+    width: 700px;
   }
 
   .tasks-list {
